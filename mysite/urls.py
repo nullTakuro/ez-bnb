@@ -16,7 +16,10 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+# URL MAPPINGS #
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('gui.urls')),
+    url(r'^login/', include('login.urls')),
 ]
