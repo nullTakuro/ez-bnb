@@ -34,6 +34,7 @@ class Address(models.Model):
 class Booking(models.Model):
     # bookingID is auto Generated
     propertyID = models.ForeignKey(Property, on_delete=models.CASCADE)      # A many-to-one relationship. Requires a positional argument: the class to which the model is related.
+    guestID = models.ForeignKey(Property, on_delete=models.CASCADE)      # A many-to-one relationship. Requires a positional argument: the class to which the model is related.
     startDateTime = models.DateTimeField(auto_now=False, auto_now_add=False)        # A date and time, represented in Python by a datetime.datetime instance
     duration = models.DurationField()       # A field for storing periods of time - modeled in Python by timedelta. When used on PostgreSQL, the data type used is an interval and on Oracle the data type is INTERVAL DAY(9) TO SECOND(6).
     endDateTime = models.DateTimeField(auto_now=False, auto_now_add=False)        # A date and time, represented in Python by a datetime.datetime instance
@@ -41,7 +42,11 @@ class Booking(models.Model):
 class Guest(models.Model):
     # guestID is auto Generated
     bookingID = models.ForeignKey(Bookings, on_delete=models.CASCADE)       # A many-to-one relationship. Requires a positional argument: the class to which the model is related.
-    gFirstName = models.CharField(max_length=20)
-    gLastName = models.CharField(max_length=20)
-    gPhone = models.BigIntegerField(max_length=14)      # A 64-bit integer, much like an IntegerField except that it is guaranteed to fit numbers from -9223372036854775808 to 9223372036854775807.
-    gEmail = models.EmailField(max_length=254)       # A CharField that checks that the value is a valid email address. It uses EmailValidator to validate the input.
+    FirstName = models.CharField(max_length=20)
+    LastName = models.CharField(max_length=20)
+    Phone = models.BigIntegerField(max_length=14)      # A 64-bit integer, much like an IntegerField except that it is guaranteed to fit numbers from -9223372036854775808 to 9223372036854775807.
+    Email = models.EmailField(max_length=254)       # A CharField that checks that the value is a valid email address. It uses EmailValidator to validate the input.
+    addressLineOne = models.CharField(max_length=50)
+    addressLineTwo = models.CharField(max_length=50)
+    addressCity = models.CharField(max_length=50)
+    addressCountry = models.CharField(max_length=50)
