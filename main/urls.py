@@ -5,6 +5,6 @@ from . import views
 urlpatterns = [
     #/login/
     url(r'^login/$', views.index, name='index'),   #default home page for the login page
-    #/102321/  OR /"bookingID"
-    url(r'^(?P<bookingID>[0-9]+)/$', views.bookingRender, name='bookingRender'),
+    #/bookings/id="corresponding ID"
+    url(r'^bookings/id=(?P<bookingID>[0-9]+)/$', views.bookingRender, name='bookingRender'),
 ]
